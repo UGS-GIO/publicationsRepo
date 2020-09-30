@@ -1,18 +1,16 @@
-# Geologic-Index-Maps - UGS Geologic Index Maps
-These applications (which used to pull all of their data from an AGOL-hosted feature service), now pulls only the geography from an AGOL feature service and uses the series_id to make a dynamic join with mySQL. 
+# publicationsList - UGS Dynamic Publications List
+This applications (which used to be represented on the UGS website in multiple ways; static, jqWidgets) uses DataTables to dynamically show all (or filtered) UGS publications. It is in the development phase right now, and in the future will be used to replace the static list of maps here (https://geology.utah.gov/map-pub/maps/geologic-maps/), the publications repository page here (https://geology.utah.gov/map-pub/publications/#), and will be used in many category-specific pages that need publication lists. 
 
-One application is custom-built for our bookstore's website (iframe of https://geology.utah.gov/apps/geoindex/bookstore-geomaps.html on https://www.utahmapstore.com/pages/geologic-map-selector).
-
-The other application is embedded into WordPress as an HTML code-block with javaScript and PHP put into head box. The testing code is hosted here: https://geology.utah.gov/apps/geoindex/index4.5mySQL.html
+The testing page is here: https://geology.utah.gov/apps/publications/geolmapfilter.php
 
 
 Project Manager: Marshall Robinson
 
 
-Product Manager:Marshall Robinson/Grant Willis
+Product Manager: Marshall Robinson
 
 
 Data Manager:	Mackenzie Cope/Marshall Robinson/Martha Jensen
 
 
-Developer: Lance Weaver/Marshall Robinson
+Developer: Marshall Robinson
