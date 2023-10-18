@@ -34,7 +34,7 @@ if (mysqli_connect_errno())
 
 
 // NOW WE DO OUR MAIN SQL CALL AND GET THE PUB TABLE
-$query = "SELECT series_id, pub_year, pub_name, pub_author, pub_sec_author, pub_url, pub_scale, keywords, bookstore_url FROM publications.UGSpubs WHERE keywords LIKE '%emmd%' ORDER BY pub_year DESC";
+$query = "SELECT series_id, pub_year, pub_name, pub_author, pub_sec_author, pub_url, pub_scale, keywords, bookstore_url FROM publications.UGSpubs WHERE keywords LIKE '%emmd%' OR keywords LIKE '%hmdc%' ORDER BY pub_year DESC";
 //pub_scale = '1:24,000' AND quad_name IS NOT NULL AND pub_url IS NOT NULL ORDER BY quad_name ASC";
 $result = $mysqli->prepare($query);
 
