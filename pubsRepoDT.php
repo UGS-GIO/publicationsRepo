@@ -170,7 +170,7 @@ while ($result->fetch()){
 		
 		$popupLink = "<div id='clickMe' onclick='getElementById(\"modalText\").innerHTML =\"".$popupContent."\"'><img src=\"https://geology.utah.gov/docs/images/down-arrow.png\" width=\"16px\"></div>";
 				
-	} else if ( strpos($PubPublisher, 'UGS') !== false || strpos($PubPublisher, 'UGMS') !== false ) { 
+	} else if ( (strpos($PubPublisher, 'UGS') !== false || strpos($PubPublisher, 'UGMS') !== false) && strpos($SeriesID, 'HD-') === false) { 
 		$popupContent .= "<br><div id=\\\"downloadLink\\\"><div id=\\\"modalFooter\\\"><a href=\\\"https://doi.org/10.34191/".$SeriesID."\\\" target=\\\"_blank\\\">https://doi.org/10.34191/".$SeriesID."</a></div>";
 		
 		$popupLink = "<div id='clickMe' onclick='getElementById(\"modalText\").innerHTML =\"".$popupContent."\"'><img src=\"https://geology.utah.gov/docs/images/down-arrow.png\" width=\"16px\"></div>";
@@ -288,6 +288,3 @@ $result->close();
 /* close connection */
 $mysqli->close();
 ?>
-
-
-
