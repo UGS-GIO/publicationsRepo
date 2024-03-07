@@ -1,7 +1,7 @@
 <?php
 // Include the connect.php file
 include ('connect.php');
-
+//test
 // Connect to the database
 $database = "publications";
 $mysqli = new mysqli($hostname, $username, $password, $database);
