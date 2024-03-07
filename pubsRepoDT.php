@@ -61,7 +61,7 @@ while ($result->fetch()){
 	$popupContent = "";
 	
 	//create link to publication for the top of the modal window
-	if ( empty($PubURL) ||  is_null($PubURL) || $PubURL === null || $PubURL === 'undefined' || $PubURL === ' ' ) { 
+	if ( (count($urls) >= 1) || empty($PubURL) ||  is_null($PubURL) || $PubURL === null || $PubURL === 'undefined' || $PubURL === ' ' ) { 
 		$popupContent = "";
 	} else {
 		$popupContent = "<div id=\\\"downloadLink\\\"><div id=\\\"leftAlign\\\"><a href=\\\"".$PubURL."\\\" target=\\\"_blank\\\">Publication</div><div id=\\\"rightAlign\\\"><img src=\\\"https://geology.utah.gov/docs/images/down-arrow.png\\\" width=\\\"16px\\\"></a></div></div><br><hr>";
@@ -163,17 +163,19 @@ while ($result->fetch()){
 		//print "</pre>";
 	}  //end if
 
-	//create link to DOI landing page at bottom of the modal window
+	//create link to DOI landing page
 	if ( strpos($SeriesID, 'MO-') !== false ) { 
 		$noMoSeriesID = substr($SeriesID, 0, 4);
-		$popupContent .= "<br><div id=\\\"downloadLink\\\"><div id=\\\"modalFooter\\\"><a href=\\\"https://doi.org/10.34191/".$noMoSeriesID."\\\" target=\\\"_blank\\\">https://doi.org/10.34191/".$noMoSeriesID."</a></div>";
+		//$popupContent .= "<br><div id=\\\"downloadLink\\\"><div id=\\\"modalFooter\\\"><a href=\\\"https://doi.org/10.34191/".$noMoSeriesID."\\\" target=\\\"_blank\\\">https://doi.org/10.34191/".$noMoSeriesID."</a></div>";
+		$doiLink = "https://doi.org/10.34191/".$noMoSeriesID;
 		
-		$popupLink = "<div id='clickMe' onclick='getElementById(\"modalText\").innerHTML =\"".$popupContent."\"'><img src=\"https://geology.utah.gov/docs/images/down-arrow.png\" width=\"16px\"></div>";
+		//$popupLink = "<div id='clickMe' onclick='getElementById(\"modalText\").innerHTML =\"".$popupContent."\"'><img src=\"https://geology.utah.gov/docs/images/down-arrow.png\" width=\"16px\"></div>";
 				
 	} else if ( (strpos($PubPublisher, 'UGS') !== false || strpos($PubPublisher, 'UGMS') !== false) && strpos($SeriesID, 'HD-') === false) { 
-		$popupContent .= "<br><div id=\\\"downloadLink\\\"><div id=\\\"modalFooter\\\"><a href=\\\"https://doi.org/10.34191/".$SeriesID."\\\" target=\\\"_blank\\\">https://doi.org/10.34191/".$SeriesID."</a></div>";
+		//$popupContent .= "<br><div id=\\\"downloadLink\\\"><div id=\\\"modalFooter\\\"><a href=\\\"https://doi.org/10.34191/".$SeriesID."\\\" target=\\\"_blank\\\">https://doi.org/10.34191/".$SeriesID."</a></div>";
+		$doiLink = "https://doi.org/10.34191/".$SeriesID;
 		
-		$popupLink = "<div id='clickMe' onclick='getElementById(\"modalText\").innerHTML =\"".$popupContent."\"'><img src=\"https://geology.utah.gov/docs/images/down-arrow.png\" width=\"16px\"></div>";
+		//$popupLink = "<div id='clickMe' onclick='getElementById(\"modalText\").innerHTML =\"".$popupContent."\"'><img src=\"https://geology.utah.gov/docs/images/down-arrow.png\" width=\"16px\"></div>";
 	} else {
 		
 	}
@@ -182,7 +184,7 @@ while ($result->fetch()){
 		$PubName = $PubName;
 	} else {
 		//$PubName = "<a href='".$PubURL."' target='_blank'><img src='https://geology.utah.gov/docs/images/pdf16x16.gif'></a> - ".$PubName;
-		$PubName = $PubName." - <a href='".$PubURL."' target='_blank'>Download</a>";
+		$PubName = "<div class='pubTitle'><a href='".$PubURL."' target='_blank'>".$PubName." <img src='https://geology.utah.gov/docs/images/pdf16x16.gif'></a></div><div class='smallDOI'><a href='".$doiLink."' target='_blank'>https://doi.org/10.34191/".$SeriesID."</a></div>";
 	}
 	/*if ( empty($PubURL) ||  is_null($PubURL) || $PubURL === null || $PubURL === 'undefined' || $PubURL === ' ' ) { 
 		$PubURLString = "";
