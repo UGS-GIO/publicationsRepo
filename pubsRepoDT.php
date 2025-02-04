@@ -137,14 +137,14 @@ while ($result->fetch()){
 	} else if ( (strpos($PubPublisher, 'UGS') !== false || strpos($PubPublisher, 'UGMS') !== false) && strpos($SeriesID, 'HD-') === false) { 
 		$doiLink = "https://doi.org/10.34191/".$SeriesID;
 	} else {
-		
+		$doiLink = '';
 	}
 
 	if ( empty($PubURL) ||  is_null($PubURL) || $PubURL === null || $PubURL === 'undefined' || $PubURL === ' ' ) { 
 		$PubName = $PubName;
 	} else {
 		//$PubName = "<a href='".$PubURL."' target='_blank'><img src='https://geology.utah.gov/docs/images/pdf16x16.gif'></a> - ".$PubName;
-		$PubName = "<div class='pubTitle'><a href='".$PubURL."' target='_blank'>".$PubName." <img src='https://geology.utah.gov/docs/images/pdf16x16.gif'></a></div><div class='smallDOI'><a href='".$doiLink."' target='_blank'>https://doi.org/10.34191/".$SeriesID."</a></div>";
+		$PubName = "<div class='pubTitle'><a href='".$PubURL."' target='_blank'>".$PubName." <img src='https://geology.utah.gov/docs/images/pdf16x16.gif'></a></div><div class='smallDOI'><a href='".$doiLink."' target='_blank'>".$doiLink."</a></div>";
 	}
 	if ( empty($BookstoreURL) ||  is_null($BookstoreURL) || $BookstoreURL === null || $BookstoreURL === 'undefined' || $BookstoreURL === ' ' ) { 
 		$BookstoreURLString = "";
